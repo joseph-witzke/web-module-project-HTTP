@@ -26,17 +26,9 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
-    axios.delete(`http://localhost:5000/api/movies/${id}`)
-            .then(res => {
-                const newList = movies.filter(movie => (movie.id === movie.id));
-                setMovies(newList);
-                console.log(newList)
-            })
-            .catch(err => {
-                console.log(err)
-            });
-        
-  }
+    const newList = movies.filter(movie => (movie.id !== Number(id)));
+    setMovies(newList);    
+  };
 
   const addToFavorites = (movie) => {
     
